@@ -20,6 +20,9 @@ System.register(function(app, auth, database) {
 
     System.aggregateAsset('css', 'common.css');
 
+    // Register the ng Module I want
+    System.angularDependencies(['ngTable']);
+
     // The middleware in config/express will run before this code
 
     // Set views path, template engine and default layout

@@ -1,3 +1,9 @@
 <section data-ng-controller="IndexController">
     <h1 mean-token="'home-default'">This is the home view</h1>
+    <table ng-table class="table">
+    <tr ng-repeat="user in users">
+        <td data-title="'Name'">{{user.name}}</td>
+        <td data-title="'Age'">{{user.age}}</td>
+    </tr>
+    </table>
 </section>

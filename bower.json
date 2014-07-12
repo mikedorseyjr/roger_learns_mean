@@ -1,15 +1,24 @@
 {
-    "name": "mean",
-    "version": "0.3.3",
-    "dependencies": {
-        "jquery": "1.x",
-        "angular": "latest",
-        "angular-resource": "latest",
-        "angular-cookies": "latest",
-        "angular-mocks": "latest",
-        "angular-route": "latest",
-        "bootstrap": "3.1.1",
-        "angular-bootstrap": "0.11.0",
-        "angular-ui-router": "#master"
-    }
+  "name": "mean",
+  "version": "0.3.3",
+  "dependencies": {
+    "angular": "~1.2.20",
+    "angular-bootstrap": "~0.11.0",
+    "jquery": "~1.11.1",
+    "ng-table": "~0.3.2",
+    "angular-mocks": "~1.2.20",
+    "angular-resource": "~1.2.20",
+    "angular-ui-router": "~0.2.10",
+    "bootstrap": "~3.1.1",
+    "angular-route": "~1.2.20",
+    "angular-cookies": "~1.2.20"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components",
+    "bower_components",
+    "test",
+    "tests"
+  ]
 }

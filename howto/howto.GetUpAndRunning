@@ -1,0 +1,49 @@
+How I got this up and running
+
+First, you probably want to clean your npm and bower cache.
+
+Then you install all of the mean stuff and set up your project. This looks like:
+
+1) sudo npm install -g meanio  // Get the mean cmdline
+2) mean init myApp                    // create your first app
+3) cd myApp
+4) run npm install
+5) Modify your grunt file to only install 1.2.20 of angular and those modules. Do not use latest.
+5) run bower install ng-table#0.3.2
+6) run bower init
+7) Then run grunt.
+
+After connecting to localhost:3000, you'll see a page that is basic and has a home page there. We've got a successful system running and so now, we just want to set up a table.
+
+Modeling packages in mean is outside the scope of this document but if you look around, you'll see that the view this is attached to is in the System package, of the default mean template. 
+
+Thus in packages/systam/app.js, register the angular module you want. On line 23, you'll see the insertion of:
+
+    // Register the ng Module I want
+    System.angularDependencies(['ngTable']);
+
+Afterwards, create a table. Thus in system/public/views/index.html, we want to insantiate this table. Here you'll see at line 3 I've inserted:
+
+    <table ng-table class="table">
+    <tr ng-repeat="user in users">
+        <td data-title="'Name'">{{user.name}}</td>
+        <td data-title="'Age'">{{user.age}}</td>
+    </tr>
+    </table>
+
+You see the ng-table now. It's also referencing a variable called users so we'll have to populate it in our controller. In system/public/controllers/index.js at line 6, you will see the data:
+
+	$scope.users = [{name: 'Moroni', age: 50},
+                {name: 'Tiancum', age: 43},
+                {name: 'Jacob', age: 27},
+                {name: 'Nephi', age: 29},
+                {name: 'Enos', age: 34}];
+
+Nice, so let's make the table pretty by adding a css class for the table in system/public/assets/css/common.css. On line 49 you'll see the new content:
+
+.ng-table {
+    border: 1px solid #000;
+}
+
+From there, thanks to grunt's running nodemon, once you're done there. YOu will see a successfully loaded table.
+
