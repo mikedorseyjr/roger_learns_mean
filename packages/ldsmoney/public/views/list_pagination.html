@@ -1,0 +1,10 @@
+<section data-ng-controller="LdsmoneyController" data-ng-init="getAllIndividuals()">
+    <p><strong>Page:</strong>{{tableParams.page()}}</p>
+    <p><strong>Count per page:</strong>{{tableParams.count()}}</p>
+	<table ng-table="tableParams" class="table">
+    <tr ng-repeat="individual in individualsWithMoney">
+        <td data-title="'Name'">{{individual.name}}</td>
+        <td data-title="'Age'">{{individual.age}}</td>
+    </tr>
+    </table>
+</section>
