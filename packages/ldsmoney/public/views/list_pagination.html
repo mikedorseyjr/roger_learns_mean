@@ -1,13 +1,31 @@
 <section data-ng-controller="LdsmoneyController" data-ng-init="getAllIndividuals()">
-	<button ng-click="tableParams.sorting({})" class="btn btn-default pull-right">Clear sorting</button>
     <p><strong>Sorting:</strong> {{tableParams.sorting()|json}}
     <p><strong>Page:</strong>{{tableParams.page()}}</p>
     <p><strong>Count per page:</strong>{{tableParams.count()}}</p>
 
 	<table ng-table="tableParams" class="table">
-    <tr ng-repeat="individual in $data">
-        <td data-title="'Name'"  sortable="'name'">{{individual.name}}</td>
-        <td data-title="'Age'" sortable="'age'">{{individual.age}}</td>
-    </tr>
+	<!-- Iterate through the grups -->
+    <tbody ng-repeat="group in $groups">
+        <tr class="ng-table-group">
+        	<!-- For each group, set up a span of columns to contain the line that has the 
+        		 group name -->
+            <td colspan="{{$columns.length}}">
+                <a href="" ng-click="group.$hideRows = !group.$hideRows">
+                    <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
+                    <strong>{{ group.value }}</strong>
+                </a>
+            </td>
+        </tr>
+        <!-- This is the data of all the users within the data belonging to said group -->
+        <tr ng-hide="group.$hideRows" ng-repeat="user in group.data">
+            <td sortable="name" data-title="'Name'">
+                {{user.name}}
+            </td>
+            <td sortable="age" data-title="'Age'">
+                {{user.age}}
+            </td>
+        </tr>
+    </tbody>
+    <!-- If you're wondering where the $groups variable comes from, it is a feature of tableParams most likely thanks in part to that awesome groupBy option. ->
     </table>
 </section>
