@@ -1,10 +1,13 @@
 <section data-ng-controller="LdsmoneyController" data-ng-init="getAllIndividuals()">
+	<button ng-click="tableParams.sorting({})" class="btn btn-default pull-right">Clear sorting</button>
+    <p><strong>Sorting:</strong> {{tableParams.sorting()|json}}
     <p><strong>Page:</strong>{{tableParams.page()}}</p>
     <p><strong>Count per page:</strong>{{tableParams.count()}}</p>
+
 	<table ng-table="tableParams" class="table">
-    <tr ng-repeat="individual in individualsWithMoney">
-        <td data-title="'Name'">{{individual.name}}</td>
-        <td data-title="'Age'">{{individual.age}}</td>
+    <tr ng-repeat="individual in $data">
+        <td data-title="'Name'"  sortable="'name'">{{individual.name}}</td>
+        <td data-title="'Age'" sortable="'age'">{{individual.age}}</td>
     </tr>
     </table>
 </section>
